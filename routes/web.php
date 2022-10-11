@@ -11,6 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HousesController@index');
+
+Route::post('/houses', 'HousesController@store');
