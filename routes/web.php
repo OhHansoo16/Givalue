@@ -13,4 +13,10 @@
 
 Route::get('/', 'HousesController@index');
 
+Route::get('/posts/create', 'HousesController@create');
+
 Route::post('/houses', 'HousesController@store');
+
+Route::get('/posts/{post}', 'RenovationsController@show');
+
+Route::post('/renovation', 'RenovationsController@store');

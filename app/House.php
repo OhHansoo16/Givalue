@@ -15,4 +15,9 @@ class House extends Model
         'address',
         'detail'
     ];//
+    
+    public function renovations()
+    {
+        return $this->hasMany('App\Renovation');  
+    }
 }
