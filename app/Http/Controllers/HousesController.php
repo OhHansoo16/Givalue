@@ -9,9 +9,9 @@ use Storage;
 class HousesController extends Controller
 {
     
-    public function index()
+    public function index(House $post)
     {
-        return view('create');
+        return view('posts/index')->with(['posts' => $post->get()]);
     }
     
     public function store(Request $request)
@@ -43,5 +43,10 @@ class HousesController extends Controller
         $house->fill($input)->save();
     
         return redirect('/');
+    }
+    
+    public function create()
+    {
+        return view('posts/create');
     }
 }
