@@ -7,7 +7,7 @@
     <body>
         <h1>物件情報</h1>
         
-        <form action="/renovations" method="post" enctype="multipart/form-data">
+        <form action="/renovation" method="post" enctype="multipart/form-data">
             @csrf
             <h2 class="house_name">
                 {{ $post->house_name }}
@@ -50,8 +50,10 @@
                 <input type="text" name="post[renovation_detail]" placeholder="入力してください">
             </div>
             
+            <textarea name="post[house_id]" style="display:none" readonly>{{ $post->id}}</textarea>
+            
             <input type="submit" value="保存"/>
         </form>
-        <div class="back">[<a href="posts/index">back</a>]</div>
+        <div class="back">[<a href="/">back</a>]</div>
     </body>
 </html>
