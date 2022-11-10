@@ -5,13 +5,19 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\House;
 use Storage;
+use Illuminate\Support\Facades\Auth;
 
 class HousesController extends Controller
 {
     
     public function index(House $post)
     {
-        return view('posts/index')->with(['posts' => $post->get()]);
+        $user = Auth::user()->role;
+        if($user == 'realestate'){
+            return view('posts/index')->with(['posts' => $post->get()]);
+        }elseif($user == 'designer'){
+            return view('posts/index')->with(['posts' => $post->get()]);
+        }
     }
     
     public function store(Request $request)
@@ -47,6 +53,9 @@ class HousesController extends Controller
     
     public function create()
     {
-        return view('posts/create');
+        $user = Auth::user()->role;
+        if($user == 'realestate'){
+            return view('posts/create');
+        }
     }
 }
