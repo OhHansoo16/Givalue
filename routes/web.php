@@ -10,6 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::group(['middleware' => ['auth']], function(){
 
 Route::get('/', 'HousesController@index');
 
@@ -19,4 +20,11 @@ Route::post('/houses', 'HousesController@store');
 
 Route::get('/posts/{post}', 'RenovationsController@show');
 
+Route::get('/renovation/index', 'RenovationsController@index');
+
 Route::post('/renovation', 'RenovationsController@store');
+});
+
+Auth::routes();
+
+

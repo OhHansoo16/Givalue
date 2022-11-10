@@ -6,12 +6,22 @@ use Illuminate\Http\Request;
 use App\Renovation;
 use App\House;
 use Storage;
+use Illuminate\Support\Facades\Auth;
+
 
 class RenovationsController extends Controller
 {
     public function show(House $post)
     {
-        return view('posts/renovation')->with(['post' => $post]);
+        $user = Auth::user()->role;
+        if($user == 'designer'){
+            return view('posts/renovation')->with(['post' => $post]);
+        }
+    }
+    
+    public function index(Renovation $post)
+    {
+        return view('posts/rnv_index')->with(['posts' => $post->get()]);
     }
 
     public function store(Request $request)
